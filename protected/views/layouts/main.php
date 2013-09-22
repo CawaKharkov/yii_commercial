@@ -10,16 +10,15 @@
 
     <title>Jumbotron Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/www/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <?php Yii::app()->clientScript->registerCssFile('/www/bootstrap/css/bootstrap.css');?>
 
-    <!-- Custom styles for this template -->
-    <link href="/www/bootstrap/css/jumbotron.css" rel="stylesheet">
+    <?php Yii::app()->clientScript->registerCssFile('/www/bootstrap/css/jumbotron.css');?>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
+      <script src="/www/bootstrap/js/html5shiv.js"></script>
+      <script src="/www/bootstrap/js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -48,7 +47,7 @@
       <div class="container">
         <h1>Hello, world!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <p><?php echo CHtml::link('Learn more &raquo;', array('controller/action'), array('class'=>'btn btn-primary btn-lg')); ?></p>
       </div>
     </div>
 
@@ -65,7 +64,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/www/bootstrap/js/jquery.js"></script>
-    <script src="/www/bootstrap/js/bootstrap.min.js"></script>
+    <?php Yii::app()->clientScript->registerScriptFile('/www/bootstrap/js/jquery.js', CClientScript::POS_END);?>
+    <?php Yii::app()->clientScript->registerScriptFile('/www/bootstrap/js/bootstrap.min.js', CClientScript::POS_END);?>
   </body>
 </html>
