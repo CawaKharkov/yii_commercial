@@ -1,0 +1,13 @@
+<?php
+
+class BreadCrumbs extends CWidget 
+{
+
+    public $crumbs = array();
+    public $delimiter = ' / ';
+
+    public function run() {
+        $this->render('breadCrumb');
+    }
+
+}

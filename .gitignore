@@ -24,3 +24,7 @@ index
 # composer
 /vendor
 composer.lock
+
+
+/assets/*
+assets/*

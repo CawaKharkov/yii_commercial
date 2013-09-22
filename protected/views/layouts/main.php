@@ -35,13 +35,21 @@
           <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div class="navbar-collapse collapse">
-        <?php $this->renderPartial('//layouts/menuPartial'); ?>
+         <?php $this->widget('MenuWidget',[
+             'section'=> 'mainMenu'
+         ]); ?>
 
-        <?php $this->renderPartial('//layouts/authPartial'); ?>
+        <?php $this->renderPartial('//partials/authPartial'); ?>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
 
+      <?php
+            /**
+             * @todo Check if controller == site && action == index
+             */
+            //var_dump(Yii::app()->getUrlManager()->); 
+      ?>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -55,9 +63,7 @@
       <!-- Example row of columns -->
       <?php echo $content; ?>
 
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
+            <?php $this->renderPartial('//partials/footer'); ?>
     </div> <!-- /container -->
 
 
