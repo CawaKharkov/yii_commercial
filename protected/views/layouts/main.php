@@ -212,7 +212,7 @@
 
 	<!-- Javascript Files -->
 	<!-- jQuery -->
-	<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" ></script>
 	<script>window.jQuery || document.write("<script src=\"js/jquery-1.9.1.min.js\" type=\"text/javascript\"><\/script>")</script>
 	    
     <!-- Respond.j media queries for IE8 -->
