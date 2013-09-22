@@ -1,222 +1,230 @@
-$(function(){
+$(document).ready(function() {
 
-	/************
-	    CONFIG
-	 ************/
-	var config = {
 
-		defaultModules:{
-			blank: [
-			        'css-mode',
-			        'h5bp-content',
-			        'modernizr',
-			        'jquerymin',
-			        'h5bp-htaccess',
-			        'h5bp-chromeframe',
-		            'h5bp-analytics',
-		            'h5bp-iecond',
-		            'h5bp-favicon',
-		            'h5bp-appletouchicons',
-		            'h5bp-scripts',
-		            'h5bp-robots',
-		            'h5bp-humans',
-		            'h5bp-404',
-		            'h5bp-adobecrossdomain'
-			        ],
-			initializr: [
-			             'css-mode',
-			             'izr-responsive',
-			             'modernizr',
-			             'respond',
-			             'jquerymin',
-			             'h5bp-chromeframe',
-			             'h5bp-analytics',
-			             'h5bp-favicon',
-			             'h5bp-appletouchicons',
-			             'h5bp-iecond'
-			             ],
-			bootstrap: [
-			            'less-mode',
-			            'boot-hero',
-			             'modernizr',
-			             'respond',
-			             'jquerymin',
-			             'h5bp-chromeframe',
-			             'h5bp-analytics',
-			             'h5bp-favicon',
-			             'h5bp-appletouchicons',
-			             'h5bp-iecond',
-			             'less'
-			            ]
-		},
-		baseUrl:'http://localhost:8888/builder?'
-	};
-	
-	/************
-	   VARIABLES
-	 ************/
-	
-	var params;
-	var modules = [];
-	var stylelang = '';
-
-	/**********
-	   EVENTS
-	 **********/	
-
-	$('input').click(function(){
-		update();
-	});
-
-	
-	$('#preconfig-blank').click(function(){
-		fillDefaultModules('blank');
-	});
-
-	$('#preconfig-initializr').click(function(){
-		fillDefaultModules('initializr');
-	});
-	
-	$('#preconfig-bootstrap').click(function(){
-		fillDefaultModules('bootstrap');
-	});
-	
-	/*********
-	   LOGIC
-	 *********/
-	
-	function fillDefaultModules(type){
-		$('input').attr('checked', false);
-				
-		for (var i = 0, curModule; curModule = config.defaultModules[type][i++];){
-			$('input[value=' + curModule +']').attr('checked', true);
-		};
-		update();
-		$('#hidden-section').fadeIn('slow');
+/*************************  Slider Revolution  *****************************/
+	if($('.banner').length) {
+		var height=$('.homev2').length>0?447:415;
+		$('.banner').revolution({
+			hideThumbs:1,
+			startwidth:1170,
+			startheight:500,
+			shadow:0,
+			touchenabled:"on",
+			navigationType: "none",
+		});    
 	}
-	
-	function update(){
-		updateModules();
-		updateUrls();
-	}
-	
-	function updateModules(){
-		modules = [];
-		$('input').each(function(){
-			if ($(this).is(':checked'))
-				modules.push($(this).val());
-		});
-		replaceSpecialModules();
-	}
-	
-	function replaceSpecialModules(){
-		if (modules.indexOf('jquerymin') != -1 && modules.indexOf('jquerydev') != -1){
-			modules.remove('jquerymin');
-			modules.remove('jquerydev');
-			modules.push('jquery');
-		}
 
-		if (modules.indexOf('modernizr') != -1 && modules.indexOf('respond') != -1){
-			modules.remove('modernizr');
-			modules.remove('respond');
-			modules.push('modernizrrespond');
-		}
-
-		if (modules.indexOf('html5shiv') != -1 && modules.indexOf('respond') != -1){
-			modules.remove('html5shiv');
-			modules.remove('respond');
-			modules.push('html5shivrespond');
-		}
-		
-		if (modules.indexOf('less-mode') != -1){
-			modules.remove('less-mode');
-			stylelang = 'less';
-		}
-		else
-			stylelang = '';
-		
-		if (modules.indexOf('css-mode') != -1){
-			modules.remove('css-mode');
-		}
-		
-		if (modules.indexOf('h5bp-content') != -1 || modules.indexOf('izr-responsive') != -1){
-			modules.push('h5bp-css');
-			modules.push('h5bp-csshelpers');
-			modules.push('h5bp-mediaqueryprint');
-		}
-
-		if (modules.indexOf('h5bp-content') != -1){
-			modules.push('h5bp-mediaqueries');
-		}
-		
-		if (modules.indexOf('h5bp-iecond') == -1){
-			modules.push('simplehtmltag');
-		}		
-
-		if (modules.indexOf('h5bp-scripts') == -1){
-			modules.push('izr-emptyscript');
-		}		
-		
-		if (modules.indexOf('boot-hero') != -1){
-			modules.push('boot-css');
-			modules.push('boot-scripts');
-			if (modules.indexOf('jquery') == -1 && modules.indexOf('jquerydev') == -1 && modules.indexOf('jquerymin') == -1){
-				modules.push('jquerymin');
+	if($('.new-classes').length) {
+		$(".new-classes").on({
+			mouseenter : function() {
+				$(this).find(".occult").slideDown(100);               
+			},
+			mouseleave : function() {
+				$(this).find(".occult").slideUp(100);            
 			}
-		}		
-		
-		
+		},".new-class");
 	}
-	
-	function updateUrls(){
-		var modeParam = '';
+
+
+/***************************** Go to top  *********************************/
+	 $(window).scroll(function(){
+		 if ($(this).scrollTop() > 900) {
+			 $('.scrollup').fadeIn();
+		 } else {
+			 $('.scrollup').fadeOut();
+		 }
+	 }); 
+ 
+	 $('.scrollup').click(function(){
+		 $("html, body").animate({ scrollTop: 0 }, 600);
+		 return false;
+	 });
+
+/******************************  Isotope  **********************************/
+	if ($('.magic-grid .content').length) {
+		// cache container
+		var $container = $('.magic-grid .content');
 		
-		if (stylelang != ''){
-			modeParam = 'mode=' + stylelang + '&';
+		// initialize isotope
+		$container.isotope({ });
+
+		// filter items when filter link is clicked
+		$('.filters button').click(function(){
+			$('.filters button').removeClass('active');
+			$(this).addClass('active');
+			
+			var selector = $(this).attr('data-filter');
+			$container.isotope({ filter: selector });
+			return false;
+		});
+	}
+
+
+
+/*******************************  GMaps  ***********************************/
+	if ($('#map').length) {
+		var map;
+		map = new GMaps({
+			div: '#map',
+			lat: 41.8902624,
+			lng: 12.4923096
+		});
+		map.addMarker({
+			lat: 41.8902624,
+			lng: 12.4923096,
+			title: 'Contanct',
+			infoWindow: {
+				content: '15rd Avenue, New York,<br /> 156408, US<br /> <br /> Email: info@company.com <br /> Web: company.com'
+			}
+		});
+	}
+
+
+
+/***************************  Easy PaiChart  *******************************/
+	if ($('.chart').length) {
+		$('.chart').easyPieChart({
+			animate: 2000,
+			barColor: "#1c9746",
+			trackColor: "#849bad",
+			scaleColor: false,
+			lineWidth: 11,
+			lineCap: "square",
+		});
+	}
+
+
+
+/******************************  Chart.js  *********************************/
+	if ($('#linear-chart').length) {
+		//Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#linear-chart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+		
+		var data = {
+			labels : ["10AM","11AM","12AM","1PM","2PM","3PM","4PM","5PM","6PM","7PM","8PM","9PM"],
+			datasets : [
+				//Actitude
+				{
+					fillColor : "rgba(220,220,220,0)",
+					strokeColor : "rgba(29,153,69,1)",
+					pointColor : "rgba(29,153,69,1)",
+					pointStrokeColor : "#fff",
+					data : [5,3,3,5,7,8,6,6,9,8,10,12]
+				},
+				{
+					fillColor : "rgba(220,220,220,0)",
+					strokeColor : "rgba(244,179,1,1)",
+					pointColor : "rgba(244,179,1,1)",
+					pointStrokeColor : "#fff",
+					data : [3,4,4,6,2,3,3,7,3,7,11,11]
+				}
+			]
 		}
 
-		params = '';
-		
-		for (var i = 0, curModule; curModule = modules[i++];){
-			params += curModule + '&';
+		var options = {
+						
+			//Boolean - If we show the scale above the chart data			
+			scaleOverlay : false,
+			
+			//Boolean - If we want to override with a hard coded scale
+			scaleOverride : true,
+			
+			//** Required if scaleOverride is true **
+			//Number - The number of steps in a hard coded scale
+			scaleSteps : 13,
+			//Number - The value jump in the hard coded scale
+			scaleStepWidth : 1,
+			//Number - The scale starting value
+			scaleStartValue : 1,
+
+			//Boolean - Whether to show labels on the scale	
+			scaleShowLabels : false,
+			
+			///Boolean - Whether grid lines are shown across the chart
+			scaleShowGridLines : false,
+			
+			//Boolean - Whether the line is curved between points
+			bezierCurve : false,
+			
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 6,
+			
+			
 		}
-		
-		params = params.substring(0, params.length - 1);
 
-		$('#preview-url').val(config.baseUrl + 'print&' + modeParam + params);
-		$('#download-url').val(config.baseUrl + modeParam + params);	
-		
-		$('#preview-link').attr('href', config.baseUrl + 'print&' + modeParam + params);
-		$('#download-link').attr('href', config.baseUrl + modeParam + params);	
-	}	
+		myNewChart.Line(data,options);
+	}
 
-	/***********
-	   HELPERS
-	 ***********/
-	
-	if (!Array.indexOf){
-		Array.prototype.indexOf = function(searchedElement){
-			for (var i = 0; i < this.length; i++){
-				if (this[i] === searchedElement)
-					return i;
-			};
-			return -1;
-		};
+
+	if ($('#pie-chart1').length) {
+		//Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#pie-chart1").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+		
+		var data = [
+			{
+				value: 50,
+				color:"#1d9945"
+			},
+			{
+				value : 50,
+				color : "#849bad"
+			},		
+		]
+
+		var options = { }
+
+		myNewChart.Pie(data,options);
+	}
+
+	if ($('#pie-chart2').length) {
+		//Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#pie-chart2").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+		
+		var data = [
+			{
+				value: 75,
+				color:"#1d9945"
+			},
+			{
+				value : 25,
+				color : "#849bad"
+			},		
+		]
+
+		var options = { }
+
+		myNewChart.Pie(data,options);
+	}
+
+/***************************  Flickr Feed  *******************************/
+	if ($('.flickr-feed').length) {
+	    $('.flickr-feed').jflickrfeed({
+    	    limit: 6,
+        	qstrings: {
+            	id: '52617155@N08'
+        	},
+        	itemTemplate: '<li><a href="{{link}}" target="_blank"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
+    	});
 	}
 	
-	Array.prototype.remove = function(searchedElement){
-		var i = this.indexOf(searchedElement);
-		if (i != -1)
-			this.splice(i, 1);
-	};
-	
-	/***********
-	    MAIN
-	 ***********/
-	
-	if ($('input:checked').length > 0)
-		$('#hidden-section').fadeIn(0);
-	update();
-	
-	
+
+
+
+/*****************************  Carousel  *********************************/
+	if ($('#testimonials').length) {
+		$('#testimonials').carousel()
+	}
+
 });
+
+
+
+
+
+

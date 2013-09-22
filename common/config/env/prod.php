@@ -10,14 +10,14 @@
 return array(
 	'components' => array(
 //		configure to suit your needs
-//		'db' => array(
-//			'connectionString' => '{DB_CONNECTION}',
-//			'username' => '{DB_USER}',
-//			'password' => '{DB_PASSWORD}',
-//			'enableProfiling' => false,
-//			'enableParamLogging' => false,
-//			'charset' => 'utf8',
-//		),
+		'db' => array(
+			'connectionString' => 'kshop',
+			'username' => 'root',
+			'password' => '',
+			'enableProfiling' => true,
+			'enableParamLogging' => true,
+			'charset' => 'utf8',
+		),
 	),
 	'params' => array(
 		'yii.debug' => false,
