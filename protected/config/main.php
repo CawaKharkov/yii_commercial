@@ -40,6 +40,12 @@ return array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
         ),
+        'clientScript'=>array(
+            'scriptMap'=>array(
+                'jquery.js'=>false,
+            ),
+            'coreScriptPosition' => '2',
+        ),
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,

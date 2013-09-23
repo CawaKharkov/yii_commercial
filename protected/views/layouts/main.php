@@ -70,6 +70,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <?php Yii::app()->clientScript->registerScriptFile('http://codeorigin.jquery.com/jquery-2.0.3.min.js', CClientScript::POS_HEAD);?>
     <?php Yii::app()->clientScript->registerScriptFile('/www/bootstrap/js/jquery.js', CClientScript::POS_END);?>
     <?php Yii::app()->clientScript->registerScriptFile('/www/bootstrap/js/bootstrap.min.js', CClientScript::POS_END);?>
   </body>
