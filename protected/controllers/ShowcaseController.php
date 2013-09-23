@@ -17,6 +17,11 @@ class ShowcaseController extends Controller
         $this->render('index', ['products' => $products]);
 	}
 
+	public function actionView($id)
+	{
+		$this->render('detailProducts', ['model' => $this->loadModel($id)]);
+	}
+
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

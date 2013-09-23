@@ -34,7 +34,7 @@ class Product extends CActiveRecord
 			array('title, description, price, categorie_id, product_img_id, active, created_at', 'required'),
 			array('title', 'length', 'max'=>100),
 			array('description', 'length', 'max'=>255),
-			array('price', 'length', 'max'=>2),
+			array('price', 'length', 'max'=>4),
 			array('categorie_id, product_img_id', 'length', 'max'=>10),
 			array('active', 'length', 'max'=>1),
 			// The following rule is used by search().
