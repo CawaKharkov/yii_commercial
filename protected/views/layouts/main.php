@@ -44,12 +44,7 @@
       </div>
     </div>
 
-      <?php
-            /**
-             * @todo Check if controller == site && action == index
-             */
-            //var_dump(Yii::app()->getUrlManager()->); 
-      ?>
+    <?php if(Yii::app()->controller->id == 'site' && Yii::app()->controller->action->id == 'index'): ?>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -58,12 +53,12 @@
         <p><?php echo CHtml::link('Learn more &raquo;', array('controller/action'), array('class'=>'btn btn-primary btn-lg')); ?></p>
       </div>
     </div>
+    <?php endif; ?>
 
     <div class="container">
       <!-- Example row of columns -->
       <?php echo $content; ?>
-
-            <?php $this->renderPartial('//partials/footer'); ?>
+      <?php $this->renderPartial('//partials/footer'); ?>
     </div> <!-- /container -->
 
 
