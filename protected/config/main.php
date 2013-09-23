@@ -42,7 +42,7 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=restaurant',
+            'connectionString' => 'mysql:host=localhost;dbname=yii_commercial',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'cawa123azs',
